@@ -8,7 +8,7 @@ import Login from './pages/login';
 
 
 // import './styles/reset.css';
-// import './styles/index.less';
+import './styles/index.less';
 
 if (module.hot) {
 	module.hot.accept();
@@ -18,7 +18,7 @@ import {Router, Route} from 'react-router-dom'
 
 render(
 	<Router history={history()}>
-		<div>   
+		<div className="content">   
 			<Route exact path="/" component={Login} />
 			{/* <Route path="/pages" component={Layout} /> */}
 		</div>
