@@ -46,8 +46,8 @@ module.exports = {
             minimize: true,
         }),
         new HtmlWebpackPlugin({
-            filename: './dist/index.html', //  文件路径
-            template: './dist/index.html', //  文件模板
+            filename: 'index.html', //  文件路径
+            template: 'index.html', //  文件模板
             minify: {
                 removeComments: true, //  移除HTML中的注释
                 collapseWhitespace: true //  删除空白符与换行符
