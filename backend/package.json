@@ -1,0 +1,25 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "description": "我的博客",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzl7/z-blog.git"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "blog",
+    "博客"
+  ],
+  "author": "zzl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zzl7/z-blog/issues"
+  },
+  "homepage": "https://github.com/zzl7/z-blog#readme"
+}
