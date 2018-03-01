@@ -58,7 +58,10 @@ class index extends React.Component {
                 <div className="body-content">
                     {/* <div className="left">header</div> */}
                     <div className="center">
-                         <Route path="/index" component={IndexPage} />
+                        <div class="main-page">
+                            <Route path="/index" component={IndexPage} />
+                         </div>
+                         <div class="info">11</div>
                     </div>
                     {/* <div className="right">right</div> */}
                 </div>

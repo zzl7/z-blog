@@ -76,10 +76,30 @@
             right: 0;
             margin: 10px auto 0;
             text-align: left;
-            .mycard {
-                display: inline-block;
-                width: 220px;
-                margin: 5px;
+            overflow-y:auto; 
+            .main-page{
+                width: calc(~'100% - 250px');
+                height:100%;
+                float: left;
+            }
+            .info{
+                float: left;
+                margin-top: 5px;
+                width: 240px;
+                height:100%;
+                min-height: 600px;
+                margin-left: 5px;
+                border: 1px solid #e8e8e8;
+            }
+            @media (max-width:960px){
+                .info {
+                    display: none;
+                    clear: both;
+                }
+                .main-page{
+                    width: 100%;
+                    clear: both;
+                }
             }
         }
     }
