@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import history from 'history/createBrowserHistory';
 import Login from './pages/login';
-// import Layout from './pages/layout';
+import Layout from './pages/layout';
 
 // import history from './pages/history';
 
@@ -20,7 +20,7 @@ render(
 	<Router history={history()}>
 		<div className="content">   
 			<Route exact path="/" component={Login} />
-			{/* <Route path="/pages" component={Layout} /> */}
+			<Route path="/index" component={Layout} />
 		</div>
 	</Router>, document.getElementById('root')
 );
