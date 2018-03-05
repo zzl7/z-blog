@@ -20,7 +20,7 @@ render(
 	<Router history={history()}>
 		<div className="content">   
 			<Route exact path="/" component={Login} />
-			<Route path="/index" component={Layout} />
+			<Route path="/pages" component={Layout} />
 		</div>
 	</Router>, document.getElementById('root')
 );

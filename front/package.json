@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js --hotOnly --colors --inline --history-api-fallback --progress --host 0.0.0.0 --port 8889",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js --hotOnly --colors --inline --history-api-fallback --progress --host 0.0.0.0 --port 8888",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js --progress --profile --bail"
   },
   "repository": {
@@ -42,6 +42,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
+    "remarkable": "^1.7.1",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.10.0",

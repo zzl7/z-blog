@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
             if (!err) {
                 console.log('Received values of form: ', values);
             }
-            this.props.history.push('/index');
+            this.props.history.push('/pages/index');
         });
     }
     render() {
