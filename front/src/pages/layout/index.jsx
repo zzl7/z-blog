@@ -20,7 +20,8 @@ class index extends React.Component {
         this.afterScrollTop = 0;
         this.state = {
             scrollDire: '',
-            visible: false
+            visible: false,
+            activeIndex: 1
         };
     }
     componentDidMount() {
@@ -44,10 +45,12 @@ class index extends React.Component {
             })
         }
     }
-    changeTag() {
-
+    changeTag(tab) {
+        this.setState({
+            activeIndex: tab
+        });
     }
-    saveFormRef(form){
+    saveFormRef(form) {
         this.form = form;
     }
     handleCancel() {
@@ -62,21 +65,29 @@ class index extends React.Component {
             visible: false
         });
     }
-    showRegisterModal(){
+    showRegisterModal() {
         this.setState({
             visible: true
         });
     }
     render() {
+        let activeIndex = this.state.activeIndex
         return (
             <div className="layout" ref="layoutRef">
                 <header className={"header" + ' ' + this.state.scrollDire}>
                     <nav>
                         <ul>
-                            <li><Link className="current" to="/pages/index">首页</Link></li>
-                            <li><Link to="/pages/photo">摄影</Link></li>
-                            <li><Link to="/pages/tour">旅游</Link></li>
-                            <li><Link to="/pages/about">关于</Link></li>
+                            <li onClick={() => { this.changeTag(1) }}>
+                                <Link className={activeIndex === 1 ? 'current' : ''} to="/pages/index">首页</Link>
+                            </li>
+                            <li onClick={() => { this.changeTag(2) }}>
+                                <Link className={activeIndex === 2 ? 'current' : ''} to="/pages/photo">摄影</Link></li>
+                            <li onClick={() => { this.changeTag(3) }}>
+                                <Link className={activeIndex === 3 ? 'current' : ''} to="/pages/tour">旅游</Link>
+                            </li>
+                            <li onClick={() => { this.changeTag(4) }}>
+                                <Link className={activeIndex === 4 ? 'current' : ''} to="/pages/about">关于</Link>
+                            </li>
                         </ul>
                     </nav>
                     <div className="account">
