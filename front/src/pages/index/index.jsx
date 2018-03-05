@@ -32,7 +32,7 @@ class index extends React.Component {
                                     <div className="author">
                                         <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                         <span>秦时明月</span>
-                                        <span class="favorite">
+                                        <span className="favorite">
                                             <Icon type="heart" />
                                             <span>999+</span>
                                         </span>

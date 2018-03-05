@@ -1,9 +1,13 @@
 .photo{
     height: 100%;
-    width: 100%;
+    width: calc(~'100% - 270px');
+    float: left;
+    margin: 5px 15px 5px 5px;
+    margin-top: 5px;
+    overflow: hidden;
     .ant-carousel .slick-slide {
         text-align: center;
-        height: 600px;
+        height: 428px;
         background: #ddd;
         overflow: hidden;
     }
@@ -19,5 +23,44 @@
         width: 100%;
         padding: 0;
         margin: 0;
+    }
+    
+}
+.more-photo{
+    width: 100%;
+    float: left;
+    h3{
+        margin-left: 5px;
+        margin-top: 10px;
+        color: #ED717C;
+    }
+    .mycard {
+        display: inline-block;
+        width: calc(~'(100% - 40px)/4');
+        margin: 5px;
+    }
+    .author {
+        margin-top: 15px;
+        color: rgba(0, 0, 0, 0.45);
+        img {
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .favorite{
+            float: right;
+            color: #ED717C;
+            font-size: 16px;
+            span{
+                font-size: 12px;
+                margin-left: 2px;
+            }
+            .anticon{
+                vertical-align: middle;
+            }
+        }
     }
 }
