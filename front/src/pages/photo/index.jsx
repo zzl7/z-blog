@@ -1,12 +1,37 @@
 import React from 'react';
 import { Carousel, Card, Icon } from 'antd';
 const { Meta } = Card;
-import SideBar from '../../components/photoSideBar';
+import photoModel from '$models/photo'
+import PhotoSideBar from '../../components/photoSideBar';
 import './index.less';
 
 class index extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            imageList: []
+        }
+    }
+    componentDidMount() {
+        this.getPhoto();
+    }
     blogDetail() {
         this.props.history.push('/pages/detail');
+    }
+    getPhoto() {
+        const params = {
+            rn: 10,
+            tag1: '动漫',
+            tag2: '全部',
+            ftags: '气质'
+        };
+        console.log('0000');
+        photoModel.getPhoto(params).then((response) => {
+            delete response.data.data[response.data.data.length -1]
+            this.setState({
+                imageList: response.data.data
+            })
+        });
     }
     render() {
         return (
@@ -19,18 +44,19 @@ class index extends React.Component {
                         <div><img alt="example" src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-366911.jpg" /></div>
                     </Carousel>
                 </div>
-                <SideBar />
+                <PhotoSideBar />
+                <h3>更多图片>></h3>
                 <div className="more-photo">
-                    <h3>更多图片>></h3>
+                    
                     {
-                        [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(record => {
+                        this.state.imageList.map((record, key) => {
                             return (
                                 <Card
                                     hoverable
-                                    key={record}
+                                    key={key}
                                     onClick={this.blogDetail.bind(this)}
                                     className="mycard"
-                                    cover={<img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />}
+                                    cover={<img alt="example" src={record.image_url} />}
                                 >
                                     <Meta
                                         title="网页设计趋势"

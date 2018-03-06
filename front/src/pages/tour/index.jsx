@@ -2,28 +2,51 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Icon } from 'antd';
 const { Meta } = Card;
+import photoModel from '$models/photo'
 import SideBar from '../../components/sideBar';
 import './index.less';
+
 class index extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            imageList: []
+        }
+    }
+    componentDidMount() {
+        this.getPhoto();
     }
     blogDetail() {
         this.props.history.push('/pages/detail');
     }
+    getPhoto() {
+        const params = {
+            rn: 10,
+            tag1: '旅游',
+            tag2: '全部',
+            ftags: '风景'
+        };
+        console.log('0000');
+        photoModel.getPhoto(params).then((response) => {
+            delete response.data.data[response.data.data.length -1]
+            this.setState({
+                imageList: response.data.data
+            })
+        });
+    }
     render() {
         return (
             <div>
-                <div className="index-page">
+                <div className="tour-page">
                     {
-                        [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(record => {
+                        this.state.imageList.map((record, key) => {
                             return (
                                 <Card
                                     hoverable
-                                    key={record}
+                                    key={key}
                                     onClick={this.blogDetail.bind(this)}
                                     className="mycard"
-                                    cover={<img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />}
+                                    cover={<img alt="example" src={record.image_url} />}
                                 >
                                     <Meta
                                         title="网页设计趋势"
