@@ -12,9 +12,10 @@ class index extends React.Component {
         this.state = {
             imageList: []
         }
+        this.getPhoto();
     }
     componentDidMount() {
-        this.getPhoto();
+        
     }
     blogDetail() {
         this.props.history.push('/pages/detail');
@@ -36,7 +37,7 @@ class index extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="tour">
                 <div className="tour-page">
                     {
                         this.state.imageList.map((record, key) => {

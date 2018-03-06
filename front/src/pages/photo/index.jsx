@@ -45,7 +45,7 @@ class index extends React.Component {
                     </Carousel>
                 </div>
                 <PhotoSideBar />
-                <h3>更多图片>></h3>
+                <div><h3>更多图片>></h3></div>
                 <div className="more-photo">
                     
                     {

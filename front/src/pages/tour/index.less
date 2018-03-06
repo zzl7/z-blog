@@ -1,35 +1,37 @@
-.tour-page {
-    width: 100%;
-    width: calc(~'100% - 250px');
-    float: left;
-    column-count: 3;
-    column-gap: 0;
-    .mycard {
-        display: inline-block;
-        margin: 5px;
-        break-inside: avoid;
-    }
-    .author {
-        margin-top: 15px;
-        color: rgba(0, 0, 0, 0.45);
-        img {
-            width: 25px;
-            height: 25px;
-            border-radius: 25px;
+.tour {
+    .tour-page {
+        width: calc(~'100% - 250px');
+        min-height: 200px;
+        float: left;
+        column-count: 3;
+        column-gap: 0;
+        .mycard {
             display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
+            margin: 5px;
+            break-inside: avoid;
         }
-        .favorite{
-            float: right;
-            color: #ED717C;
-            font-size: 16px;
-            span{
-                font-size: 12px;
-                margin-left: 2px;
-            }
-            .anticon{
+        .author {
+            margin-top: 15px;
+            color: rgba(0, 0, 0, 0.45);
+            img {
+                width: 25px;
+                height: 25px;
+                border-radius: 25px;
+                display: inline-block;
                 vertical-align: middle;
+                margin-right: 10px;
+            }
+            .favorite {
+                float: right;
+                color: #ED717C;
+                font-size: 16px;
+                span {
+                    font-size: 12px;
+                    margin-left: 2px;
+                }
+                .anticon {
+                    vertical-align: middle;
+                }
             }
         }
     }

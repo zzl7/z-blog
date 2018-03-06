@@ -29,19 +29,21 @@ module.exports = webpackMerge(commonConfig, {
     devServer: {
         hot: true,
         // contentBase: "./dist",//本地服务器所加载的页面所在的目录
-        // proxy: [{
-        //     context: ['/graphql'],
-        //     target: 'http://192.168.6.10:19931',
-        //     secure: false
-        // },{
-        //     context: ['/v1/**'],
-        //     target: 'http://192.168.6.10:19931',
-        //     secure: false
-        // },{
-        //   context:['/channel/**'],
-        //   target:'http://image.baidu.com',
-        //   secure: false,
-        //   changeOrigin:true
-        // }]
+        proxy: [
+            // {
+            //     context: ['/graphql'],
+            //     target: 'http://192.168.6.10:19931',
+            //     secure: false
+            // }, {
+            //     context: ['/v1/**'],
+            //     target: 'http://192.168.6.10:19931',
+            //     secure: false
+            // },
+            {
+                context: ['/channel/**'],
+                target: 'http://image.baidu.com',
+                secure: false,
+                changeOrigin: true
+            }]
     },
 });
