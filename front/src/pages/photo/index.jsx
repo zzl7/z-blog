@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Card, Icon } from 'antd';
 const { Meta } = Card;
+import LazyLoad, { forceCheck } from 'react-lazyload';
 import photoModel from '$models/photo'
 import PhotoSideBar from '../../components/photoSideBar';
 import './index.less';
@@ -20,17 +21,18 @@ class index extends React.Component {
     }
     getPhoto() {
         const params = {
-            rn: 10,
+            rn: 30,
             tag1: '动漫',
             tag2: '全部',
-            ftags: '气质'
+            ftags: '可爱'
         };
         console.log('0000');
         photoModel.getPhoto(params).then((response) => {
             delete response.data.data[response.data.data.length -1]
             this.setState({
                 imageList: response.data.data
-            })
+            });
+            forceCheck();
         });
     }
     render() {
@@ -45,9 +47,9 @@ class index extends React.Component {
                     </Carousel>
                 </div>
                 <PhotoSideBar />
-                <div><h3>更多图片>></h3></div>
+                <h3>更多图片</h3>
                 <div className="more-photo">
-                    
+                
                     {
                         this.state.imageList.map((record, key) => {
                             return (
@@ -75,6 +77,7 @@ class index extends React.Component {
                         })
                     }
                 </div>
+                
             </div>
         )
     }
