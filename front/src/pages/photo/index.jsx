@@ -2,7 +2,8 @@ import React from 'react';
 import { Carousel, Card, Icon } from 'antd';
 const { Meta } = Card;
 import LazyLoad, { forceCheck } from 'react-lazyload';
-import photoModel from '$models/photo'
+import photoModel from '$models/photo';
+import userModel from '$models/user';
 import PhotoSideBar from '../../components/photoSideBar';
 import './index.less';
 
@@ -15,6 +16,7 @@ class index extends React.Component {
     }
     componentDidMount() {
         this.getPhoto();
+        this.getUser();
     }
     blogDetail() {
         this.props.history.push('/pages/detail');
@@ -33,6 +35,12 @@ class index extends React.Component {
                 imageList: response.data.data
             });
             forceCheck();
+        });
+    }
+    getUser() {
+        console.log('dsds');
+        userModel.getUser().then((response) => {
+            console.log(response);
         });
     }
     render() {
