@@ -32,7 +32,7 @@ module.exports = webpackMerge(commonConfig, {
         proxy: [
             {
                 context: ['/v1/**'],
-                target: 'http://192.168.6.36:3000',
+                target: 'http://127.0.0.1:3000',
                 secure: false
             },
             {
