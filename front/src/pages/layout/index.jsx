@@ -23,6 +23,8 @@ class index extends React.Component {
             visible: false,
             activeIndex: 1
         };
+        this.userInfo = sessionStorage.getItem("userInfo") ? JSON.parse(sessionStorage.getItem("userInfo")) : []
+        console.log(this.userInfo, 'this.userInfo');
     }
     componentDidMount() {
         this.refs.layoutRef.addEventListener('scroll', (e) => {
@@ -59,6 +61,10 @@ class index extends React.Component {
             visible: false
         });
     }
+    logout() {
+        sessionStorage.setItem('userInfo', '');
+        this.props.history.push('/');
+    }
     handleOk() {
         console.log('ok');
         this.setState({
@@ -92,8 +98,15 @@ class index extends React.Component {
                     </nav>
                     <div className="account">
                         <ul>
-                            <li onClick={this.showRegisterModal.bind(this)}><a>注册</a></li>
-                            <li><Link to={`/`}>登录</Link></li>
+                            {!this.userInfo.length ?
+                                <div>
+                                    <li onClick={this.showRegisterModal.bind(this)}><a>注册</a></li>
+                                    <li><Link to={`/`}>登录</Link></li>
+                                </div> :
+                                <div>
+                                    <li><a><Icon className="user-icon" size="large" type="user" />{this.userInfo[0].userName}</a></li>
+                                    <li onClick={this.logout.bind(this)}><a>注销</a></li>
+                                </div>}
                         </ul>
                     </div>
                 </header>

@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'antd';
+import { Card, Icon, Input, Button } from 'antd';
 const { Meta } = Card;
+const { TextArea } = Input;
+
 import Remarkable from 'remarkable';
 import SideBar from '../../components/sideBar';
 import './index.less';
 class index extends React.Component {
     constructor(props) {
         super(props)
-        this.state={
+        this.state = {
             content: ''
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         let content = `
 #### 入门书
 入门可以通过啃书，但书本上的东西很多都已经过时了，在啃书的同时，也要持续关注技术的新动态。这里推几本我觉着不错的书：
@@ -83,7 +85,7 @@ class index extends React.Component {
     // }
     renderMarkdown(source) {
         this.options = {
-            html: true 
+            html: true
         };
         if (!this.md) {
             this.md = new Remarkable(this.options);
@@ -93,12 +95,46 @@ class index extends React.Component {
     render() {
         return (
             <div>
-                <div className="index-page">
+                <div className="blog-detail">
                     <div className="blog-content">
-                        <div className="full-image"><img alt="example" src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-479801.jpg" /></div>
+                        <div className="full-image">
+                            <img alt="example" src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-479801.jpg" />
+                            <div className="author">
+                                <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                <span>秦时明月</span>
+                                <span className="favorite">
+                                    <Icon type="heart" />
+                                    <span>999+</span>
+                                </span>
+                            </div>
+                        </div>
                         <div className="md-content">
                             {/*<ReactMarkdown source={this.state.content} />*/}
                             <span className="md-container" dangerouslySetInnerHTML={{ __html: this.state.content }} />
+                        </div>
+                        <div className="comments">
+                            <div className="author">
+                                <div>
+                                    <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                    <span>1楼: 秦时明月</span>
+                                    <span>2018/03/08 12:14</span>
+                                </div>
+                                <div className="comment-detail">秦时明月sazdfsffs</div>
+                            </div>
+                        </div>
+                        <div className="comments">
+                            <div className="author">
+                                <div>
+                                    <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                    <span>2楼: 秦时明月</span>
+                                    <span>2018/03/08 12:14</span>
+                                </div>
+                                <div className="comment-detail">正是因为这类抽象框架的出现，才使得我们的关注点开始偏向了架构，而不是来回纠缠于频繁琐碎的“小事”（各种dom操作以及数据变化之后的ui更新）上。如何组织SPA的路由，评估一个组件的价值，以及如何设计一个组件（入参、事件）等等。</div>
+                            </div>
+                        </div>
+                        <div className="comment">
+                            <TextArea rows={4} placeholder="评论" />
+                            <Button className="comment-btn">发表</Button>
                         </div>
                     </div>
                 </div>

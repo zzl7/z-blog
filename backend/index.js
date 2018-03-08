@@ -14,7 +14,7 @@ const path = require('path');
 
 // db.on('error', console.error.bind(console, '连接错误:'));
 
-// db.once('open', function () {
+db.once('open', function () {
 //     一次打开记录
 //     let kittySchema = mongoose.Schema({
 //         name: String
@@ -46,19 +46,19 @@ const path = require('path');
 //         console.log('查询结果:' , res);
 //     });//查询
 
-//     let user = model.user;
-//     user.create([{ name: 'xaomiao', password: '12345', email: '12@s@s', id: '11' }], (err, res) => {
-//         if (err) return console.error(err)
-//         console.log(res);
-//     })
-//     user.find((err, res) => {
-//         if (err) return console.error(err);
-//         console.log(res);
-//     })
+    let user = model.user;
+    user.create([{ userName: 'zgh', password: '123456', email: '12@s@s', id: '11' }], (err, res) => {
+        if (err) return console.error(err)
+        console.log(res);
+    })
+    user.find((err, res) => {
+        if (err) return console.error(err);
+        console.log(res);
+    })
+
+});
 
 
-
-// });
 // app.use('/', express.static('./swagger'));
 app.use(express.static(path.join(__dirname, 'swagger')));
 app.use(router);

@@ -10,8 +10,11 @@ let user = {
             next();
         })
     },
-    login(req, res, next){
-        model.user.find((err, results) => {
+    login(req, res, next) {
+        console.log('header:', req.header)
+        console.log('body:', req.body)
+        let params = req.body
+        model.user.find({userName : params.userName, password: params.password}, (err, results) => {
             res.json({
                 data: results
             });
