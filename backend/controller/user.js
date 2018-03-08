@@ -1,3 +1,4 @@
+
 const model = require('../models/user');
 
 let user = {
@@ -10,10 +11,18 @@ let user = {
             next();
         })
     },
+    createUser(req, res, next) {
+        let params = req.body;
+        model.user.create([params], (err, results) => {
+            res.json({
+                data: 'success'
+            });
+            res.status(200);
+            next();
+        })
+    },
     login(req, res, next) {
-        console.log('header:', req.header)
-        console.log('body:', req.body)
-        let params = req.body
+        let params = req.body;
         model.user.find({userName : params.userName, password: params.password}, (err, results) => {
             res.json({
                 data: results

@@ -1,9 +1,10 @@
 // import express from "express";
+
 const express = require('express');
 const app = express();
 const db = require('./common/util').db;
 const model = require('./models/user');
-const router = require('./routes/user.js').router;
+const router = require('./routes/user').router;
 const path = require('path');
 // const mongoose = require('mongoose');//引用mongoose模块
 
