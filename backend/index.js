@@ -4,6 +4,7 @@ const app = express();
 const db = require('./common/util').db;
 const model = require('./models/user');
 const router = require('./routes/user.js').router;
+const path = require('path');
 // const mongoose = require('mongoose');//引用mongoose模块
 
 // mongoose.connect('mongodb://127.0.0.1:27017/test11'); //创建一个数据库连接
@@ -58,7 +59,8 @@ const router = require('./routes/user.js').router;
 
 
 // });
-
+// app.use('/', express.static('./swagger'));
+app.use(express.static(path.join(__dirname, 'swagger')));
 app.use(router);
 app.get('/', (req, res) => {
     res.send('Hello World!');

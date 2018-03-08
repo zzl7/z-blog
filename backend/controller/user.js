@@ -10,6 +10,15 @@ let user = {
             next();
         })
     },
+    login(req, res, next){
+        model.user.find((err, results) => {
+            res.json({
+                data: results
+            });
+            res.status(200);
+            next();
+        })
+    }
 
 }
 
