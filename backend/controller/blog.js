@@ -66,7 +66,19 @@ let blog = {
             });
             next();
         })
-    }
+    },
+    commentBlog(req, res, next) {
+        let body = req.body;
+        let params = req.params;
+        body.date = new Date();
+        model.blog.update({_id: params.id}, {$addToSet: {comments:body}}, (err, results) => {
+            res.status(200);
+            res.json({
+                data: results
+            });
+            next();
+        })
+    },
 }
 
 module.exports = blog;

@@ -10,7 +10,7 @@ const BlogSchema = new Schema({
     body: String,
     author: String,
     date: Date,
-    comments: [{ body: String, date: Date, commentator:  String, iconUrl: String}],
+    comments: [{ body: String, date: Date, commentator:  String}],
     meta: {
         votes: Number,
         favs: Number
