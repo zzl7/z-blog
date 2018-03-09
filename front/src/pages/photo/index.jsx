@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel, Card, Icon } from 'antd';
 const { Meta } = Card;
-import LazyLoad, { forceCheck } from 'react-lazyload';
+// import LazyLoad, { forceCheck } from 'react-lazyload';
 import photoModel from '$models/photo';
 import userModel from '$models/user';
 import PhotoSideBar from '../../components/photoSideBar';

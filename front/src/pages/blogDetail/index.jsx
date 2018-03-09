@@ -4,7 +4,8 @@ import { Card, Icon, Input, Button } from 'antd';
 const { Meta } = Card;
 const { TextArea } = Input;
 import moment from 'moment';
-
+import ReactMde, { ReactMdeTypes, ReactMdeCommands } from 'react-mde';
+import "react-mde/lib/styles/css/react-mde-all.css";
 import Remarkable from 'remarkable';
 import SideBar from '../../components/sideBar';
 import './index.less';
@@ -16,7 +17,8 @@ class index extends React.Component {
         super(props)
         this.state = {
             content: {},
-            body: ''
+            body: '',
+            reactMdeValue: { text: "" },
         }
         // console.log(this.props);
         this.getBlog();
@@ -24,7 +26,7 @@ class index extends React.Component {
     componentWillReceiveProps() {
         if (this.props.match.params.id != this.blogId) {
             console.log(this.props.match.params.id, '===', this.blogId)
-            // this.getBlog();
+            this.getBlog();
         }
 
     }
@@ -111,11 +113,14 @@ class index extends React.Component {
         let userInfo = sessionStorage.getItem("userInfo") ? JSON.parse(sessionStorage.getItem("userInfo")) : []
         let id = this.props.match.params.id;
         let commentator = userInfo[0].userName;
-        let params = { body: this.state.body, commentator: commentator }
+        let params = { body: this.state.reactMdeValue.text, commentator: commentator }
         blogModel.commentBlog(id, params).then((response) => {
             // this.setState({
             //     content: response.data.data[0]
             // })
+            this.setState({
+                body: ''
+            });
             this.getBlog();
         });
     }
@@ -133,6 +138,11 @@ class index extends React.Component {
             this.md = new Remarkable(this.options);
         }
         return this.md.render(source);
+    }
+    handleValueChange(value) {
+        this.setState({
+            reactMdeValue: value
+        });
     }
     render() {
         return (
@@ -156,26 +166,37 @@ class index extends React.Component {
                             {/*<ReactMarkdown source={this.state.content} />*/}
                             <span className="md-container" dangerouslySetInnerHTML={{ __html: this.state.content.body }} />
                         </div>
-                        {
-                            this.state.content && this.state.content.comments ? this.state.content.comments.map((record, index) => {
-                                return (
-                                    <div className="comments" key={record._id}>
-                                        <div className="author">
-                                            <div>
-                                                <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
-                                                <span>{index + 1}楼: {record.commentator}</span>
-                                                <span className="date">{moment(record.date).format('YYYY-MM-DD HH:mm')}</span>
+                        <div>
+                            {
+                                this.state.content && this.state.content.comments ? this.state.content.comments.map((record, index) => {
+                                    let markdownHtml =  this.renderMarkdown(record.body)
+                                    return (
+                                        <div className="comments" key={record._id}>
+                                            <div className="author">
+                                                <div>
+                                                    <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                                    <span>{index + 1}楼: {record.commentator}</span>
+                                                    <span className="date">{moment(record.date).format('YYYY-MM-DD HH:mm')}</span>
+                                                </div>
+                                                <div className="comment-detail"><span className="md-container" dangerouslySetInnerHTML={{ __html:  markdownHtml}} /></div>
                                             </div>
-                                            <div className="comment-detail">{record.body}</div>
                                         </div>
-                                    </div>
-                                )
-                            }) : ''
-                        }
-
+                                    )
+                                }) : ''
+                            }
+                        </div>
                         <div className="comment">
-                            <TextArea rows={4} placeholder="评论" value={this.state.body} onChange={this.onChangeComment.bind(this)} />
+                            <ReactMde
+                                value={this.state.reactMdeValue}
+                                onChange={this.handleValueChange.bind(this)}
+                                commands={ReactMdeCommands.getDefaultCommands()}
+                                showdownOptions={{ tables: false, simplifiedAutoLink: false }}
+                            />
+                            {/* <TextArea rows={4} placeholder="评论" value={this.state.body} onChange={this.onChangeComment.bind(this)} /> */}
                             <Button className="comment-btn" onClick={this.commentBlog.bind(this)}>发表</Button>
+                        </div>
+                        <div className="container">
+
                         </div>
                     </div>
                 </div>
