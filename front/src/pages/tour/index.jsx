@@ -22,7 +22,7 @@ class index extends React.Component {
     }
     getPhoto() {
         const params = {
-            rn: 10,
+            rn: 15,
             tag1: '旅游',
             tag2: '全部',
             ftags: '风景'

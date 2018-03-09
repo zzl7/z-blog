@@ -53,7 +53,7 @@ class ModalForm extends Component {
         };
         return (
             <Modal
-                title={'创建用户'}
+                title="用户注册"
                 visible={this.props.showModal}
                 onOk={this.props.onOk.bind(this)}
                 onCancel={this.props.onCancel.bind(this)}
@@ -62,7 +62,7 @@ class ModalForm extends Component {
                 className="userModal1">
                 <Form layout="horizontal">
                     <FormItem label="用户名" {...formItemLayout}>
-                        {getFieldDecorator('username', {
+                        {getFieldDecorator('userName', {
                             initialValue: '',
                             rules: [{
                                 validator: this.illegalChar.bind(this), required: true

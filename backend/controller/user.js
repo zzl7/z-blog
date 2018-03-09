@@ -14,6 +14,12 @@ let user = {
     createUser(req, res, next) {
         let params = req.body;
         model.user.create([params], (err, results) => {
+            if(err){
+                res.json({
+                    data: 'error'
+                });
+                return
+            }
             res.json({
                 data: 'success'
             });
@@ -24,6 +30,12 @@ let user = {
     login(req, res, next) {
         let params = req.body;
         model.user.find({userName : params.userName, password: params.password}, (err, results) => {
+            if(err){
+                res.json({
+                    data: 'error'
+                });
+                return
+            }
             res.json({
                 data: results
             });

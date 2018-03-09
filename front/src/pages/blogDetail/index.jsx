@@ -117,7 +117,7 @@ class index extends React.Component {
                                 <div>
                                     <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                     <span>1楼: 秦时明月</span>
-                                    <span>2018/03/08 12:14</span>
+                                    <span class="date">2018/03/08 12:14</span>
                                 </div>
                                 <div className="comment-detail">秦时明月sazdfsffs</div>
                             </div>
@@ -127,7 +127,7 @@ class index extends React.Component {
                                 <div>
                                     <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                     <span>2楼: 秦时明月</span>
-                                    <span>2018/03/08 12:14</span>
+                                    <span class="date">2018/03/08 12:14</span>
                                 </div>
                                 <div className="comment-detail">正是因为这类抽象框架的出现，才使得我们的关注点开始偏向了架构，而不是来回纠缠于频繁琐碎的“小事”（各种dom操作以及数据变化之后的ui更新）上。如何组织SPA的路由，评估一个组件的价值，以及如何设计一个组件（入参、事件）等等。</div>
                             </div>

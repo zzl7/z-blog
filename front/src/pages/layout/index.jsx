@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { Card, Input, Icon } from 'antd';
+import { Card, Input, Icon, message, notification } from 'antd';
 const { Meta } = Card;
 const Search = Input.Search;
 
@@ -12,6 +12,7 @@ import About from '../about';
 import Tour from '../tour';
 import Register from '../../components/register';
 import history from 'history/createBrowserHistory';
+import userModel from '$models/user';
 
 class index extends React.Component {
     constructor(props) {
@@ -31,9 +32,6 @@ class index extends React.Component {
             this.handleScroll(e)
         });
         this.beforeScrollTop = this.refs.layoutRef.scrollTop;
-    }
-    blogDetail() {
-        this.props.history.push('/');
     }
     handleScroll(e) {
         this.afterScrollTop = e.target.scrollTop;
@@ -55,18 +53,32 @@ class index extends React.Component {
     saveFormRef(form) {
         this.form = form;
     }
-    handleCancel() {
-        console.log('onCancel');
-        this.setState({
-            visible: false
-        });
-    }
     logout() {
         sessionStorage.setItem('userInfo', '');
         this.props.history.push('/');
     }
     handleOk() {
-        console.log('ok');
+        this.form.validateFields((err, values) => {
+            if(err){
+                return
+            }
+            userModel.createUser(values).then((response)=>{
+                if(response.data.data === 'success'){
+                    message.success('注册成功！')
+                }else{
+                    notification.error({
+                        message: '注册失败',
+                        description: '请稍后再尝试！'
+                    })
+                }
+            })
+        })
+        this.setState({
+            visible: false
+        });
+    }
+    handleCancel() {
+        console.log('onCancel');
         this.setState({
             visible: false
         });

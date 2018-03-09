@@ -6,10 +6,11 @@ const Schema = mongoose.Schema;
 const BlogSchema = new Schema({
     title: String,
     imgUrl: String,
+    iconUrl: String,
     body: String,
     author: String,
     date: Date,
-    comments: [{ body: String, date: Date, commentator:  String}],
+    comments: [{ body: String, date: Date, commentator:  String, iconUrl: String}],
     meta: {
         votes: Number,
         favs: Number

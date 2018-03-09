@@ -47,15 +47,15 @@ db.once('open', function () {
 //         console.log('查询结果:' , res);
 //     });//查询
 
-    let user = model.user;
-    user.create([{ userName: 'zgh', password: '123456', email: '12@s@s', id: '11' }], (err, res) => {
-        if (err) return console.error(err)
-        console.log(res);
-    })
-    user.find((err, res) => {
-        if (err) return console.error(err);
-        console.log(res);
-    })
+    // let user = model.user;
+    // user.create([{ userName: 'zgh', password: '123456', email: '12@s@s', id: '11' }], (err, res) => {
+    //     if (err) return console.error(err)
+    //     console.log(res);
+    // })
+    // user.find((err, res) => {
+    //     if (err) return console.error(err);
+    //     console.log(res);
+    // })
 
 });
 
