@@ -9,6 +9,7 @@ import SideBar from '../../components/sideBar';
 import './index.less';
 import blogModel from '$models/blog';
 
+
 class index extends React.Component {
     constructor(props) {
         super(props)
@@ -16,6 +17,9 @@ class index extends React.Component {
             content: {}
         }
         // console.log(this.props);
+        this.getBlog();
+    }
+    componentWillReceiveProps() {
         this.getBlog();
     }
     componentDidMount() {

@@ -14,6 +14,7 @@ class index extends React.Component {
             recentBlogs: []
         };
     }
+
     getRecentBlog() {
         blogModel.getRecentBlog().then((response) => {
             console.log(response);
@@ -36,8 +37,8 @@ class index extends React.Component {
                     {
                         this.state.recentBlogs.map((record) => {
                             return (
-                                <li key={record._id}>
-                                    <Link  to={`/pages/blog/${record._id}`}>
+                                <li key={record._id} onClick={() => { this.getRecentBlog(record._id) }}>
+                                    <Link to={`/pages/blog/${record._id}`}>
                                         <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                         <div className="recent">
                                             <div className="recent-blog">{record.title}</div>
