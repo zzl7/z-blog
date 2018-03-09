@@ -93,7 +93,7 @@ class index extends React.Component {
     render() {
         return (
             <div>
-                <div className="index-page">
+                <div className="about-page">
                     <div className="blog-content">
                         <div className="full-image"><img alt="example" src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-479801.jpg" /></div>
                         <div className="md-content">

@@ -126,7 +126,7 @@ class index extends React.Component {
                     {/* <div className="left">header</div> */}
                     <div className="center">
                         <Route path="/pages/index" component={IndexPage} />
-                        <Route path="/pages/detail" component={BlogDetail} />
+                        <Route path="/pages/blog/:id" component={BlogDetail} />
                         <Route path="/pages/photo" component={Photo} />
                         <Route path="/pages/tour" component={Tour} />
                         <Route path="/pages/about" component={About} />

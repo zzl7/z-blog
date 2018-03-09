@@ -100,16 +100,23 @@ paths:
       tags:
         - blog
       parameters:
-        - in: header
-          name: token
-          schema:
-            type: string
-            format: uuid
-          required: true
         - in: path
           name: id
-          description: 用户ID
-      description: 获取某用户的信息
+          description: 博客ID
+      description: 获取某一博客
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: no enough input
+    delete:
+      tags:
+        - blog
+      parameters:
+        - in: path
+          name: id
+          description: 博客ID
+      description: 删除博客
       responses:
         '200':
           description: ''

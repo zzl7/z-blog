@@ -20,8 +20,8 @@ class index extends React.Component {
             });
         })
     }
-    blogDetail() {
-        this.props.history.push('/pages/detail');
+    blogDetail(id) {
+        this.props.history.push(`/pages/blog/${id}`);
     }
     render() {
         return (
@@ -33,7 +33,7 @@ class index extends React.Component {
                                 <Card
                                     hoverable
                                     key={record._id}
-                                    onClick={this.blogDetail.bind(this)}
+                                    onClick={() => { this.blogDetail(record._id) }}
                                     className="mycard"
                                     cover={<img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />}
                                 >

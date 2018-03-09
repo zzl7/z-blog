@@ -15,15 +15,17 @@ let user = {
         let params = req.body;
         model.user.create([params], (err, results) => {
             if(err){
+                res.status(400);
                 res.json({
                     data: 'error'
                 });
                 return
             }
+            res.status(200);
             res.json({
                 data: 'success'
             });
-            res.status(200);
+            
             next();
         })
     },
@@ -31,6 +33,7 @@ let user = {
         let params = req.body;
         model.user.find({userName : params.userName, password: params.password}, (err, results) => {
             if(err){
+                res.status(400);
                 res.json({
                     data: 'error'
                 });
