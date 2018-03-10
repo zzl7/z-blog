@@ -7,6 +7,12 @@ const Index = {
     getBlog(id){
         return axios.get(`/v1/blog/${id}`) 
     },
+    addBlog(params) {
+        return axios.post('/v1/blog', params); 
+    },
+    deleteBlog(id){
+        return axios.delete(`/v1/blog/${id}`)
+    },
     getRecentBlog(){
         return axios.get(`/v1/blogs/recent`) 
     },

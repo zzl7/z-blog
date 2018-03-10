@@ -1,0 +1,51 @@
+.add-blog {
+    .mde-header, .mde-text{
+        width: 50%;
+    }
+    .mde-header{
+        padding: 0;
+    }
+    .mde-preview{
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: calc(~'50% - 10px');
+        margin-left: 10px;
+    }
+    .mde-text textarea{
+        height: 600px;
+    }
+    .mde-preview .mde-preview-content{
+        height: 600px;
+        overflow-y: scroll;
+    }
+    .mde-help{
+        display: none;
+    }
+    .react-mde{
+        position: relative;
+    }
+    textarea:hover, textarea:focus{
+        border-color: #ED717C;
+        outline:none;
+    }
+    .btn-content{
+        text-align: right;
+        margin-top: 5px;
+        .btn{
+            margin-top: 10px;
+            display: inline-block;
+            background: #ED717C;
+            color: #fff;
+            border-color: #ED717C;
+        }
+        .btn:hover, .btn:focus, .btn:visited{
+            margin-top: 10px;
+            display: inline-block;
+            background: #ED717C;
+            color: #fff;
+            border-color: #ED717C;
+        }
+    }
+    
+}

@@ -9,7 +9,9 @@ import IndexPage from '../index'
 import BlogDetail from '../blogDetail'
 import Photo from '../photo';
 import About from '../about';
+import Manager from '../manager';
 import Tour from '../tour';
+import AddBlog from '../addBlog';
 import Register from '../../components/register';
 import history from 'history/createBrowserHistory';
 import userModel from '$models/user';
@@ -117,6 +119,7 @@ class index extends React.Component {
                                 </div> :
                                 <div>
                                     <li><a><Icon className="user-icon" size="large" type="user" />{this.userInfo[0].userName}</a></li>
+                                    <li><Link to={`/pages/manager`}><Icon className="user-icon" size="large" type="setting" />后台管理</Link></li>
                                     <li onClick={this.logout.bind(this)}><a>注销</a></li>
                                 </div>}
                         </ul>
@@ -130,6 +133,8 @@ class index extends React.Component {
                         <Route path="/pages/photo" component={Photo} />
                         <Route path="/pages/tour" component={Tour} />
                         <Route path="/pages/about" component={About} />
+                        <Route path="/pages/manager" component={Manager} />
+                        <Route path="/pages/addBlog" component={AddBlog} />
                     </div>
                     {/* <div className="right">right</div> */}
                 </div>

@@ -32,7 +32,7 @@ let blog = {
     },
     getBlogs(req, res, next) {
         let params = req.body;
-        model.blog.find((err, results) => {
+        model.blog.find().sort({'date':-1}).exec((err, results) => {
             res.status(200);
             res.json({
                 data: results

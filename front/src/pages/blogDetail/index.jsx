@@ -119,7 +119,7 @@ class index extends React.Component {
             //     content: response.data.data[0]
             // })
             this.setState({
-                body: ''
+                reactMdeValue: { text: "" }
             });
             this.getBlog();
         });
@@ -145,6 +145,7 @@ class index extends React.Component {
         });
     }
     render() {
+        let mdText = this.renderMarkdown(this.state.content.body);
         return (
             <div>
                 <div className="blog-detail">
@@ -164,7 +165,7 @@ class index extends React.Component {
                         <h3 className="title">{this.state.content.title}</h3>
                         <div className="md-content">
                             {/*<ReactMarkdown source={this.state.content} />*/}
-                            <span className="md-container" dangerouslySetInnerHTML={{ __html: this.state.content.body }} />
+                            <span className="md-container" dangerouslySetInnerHTML={{ __html: mdText }} />
                         </div>
                         <div>
                             {
@@ -174,7 +175,7 @@ class index extends React.Component {
                                         <div className="comments" key={record._id}>
                                             <div className="author">
                                                 <div>
-                                                    <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                                    <img class="author-icon" alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                                     <span>{index + 1}楼: {record.commentator}</span>
                                                     <span className="date">{moment(record.date).format('YYYY-MM-DD HH:mm')}</span>
                                                 </div>
@@ -194,9 +195,6 @@ class index extends React.Component {
                             />
                             {/* <TextArea rows={4} placeholder="评论" value={this.state.body} onChange={this.onChangeComment.bind(this)} /> */}
                             <Button className="comment-btn" onClick={this.commentBlog.bind(this)}>发表</Button>
-                        </div>
-                        <div className="container">
-
                         </div>
                     </div>
                 </div>
