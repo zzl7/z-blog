@@ -63,8 +63,8 @@ db.once('open', function () {
 
 // app.use('/', express.static('./swagger'));
 // app.use(express.static(path.join(__dirname, 'swagger')));
-app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/channel', proxy({ target: 'http://www.baidu.com', changeOrigin: true })); 
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(router);
 app.get('/', (req, res) => {
     res.send('Hello World!');
