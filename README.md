@@ -1,8 +1,9 @@
 ## Z-BLOG,我的博客！
 
 ### 项目运行
+
+* 项目运行之前，请确保系统已经安装以下应用
 ```
-项目运行之前，请确保系统已经安装以下应用
 1、node (6.0 及以上版本)
 2、mongodb (开启状态)
 ```
@@ -10,24 +11,30 @@
 ```
 git clone https://github.com/zzl7/z-blog.git  
 
-启动前台
+```
+* 启动前台
+```
 cd z-blog/front
 
 npm i
 
 npm start
+```
 
-访问前台: http://localhost:8888
+* 访问前台: http://localhost:8888
 
-启动后台
+* 启动后台
+
+```
 cd z-blog/backend
 cd z-blog/front
 
 npm i
 
 node index.js
+```
 
-访问后台: http://localhost:3000 可以看到后台的接口
+* 访问后台: http://localhost:3000 可以看到后台的接口
 
 
 ## 暂定功能
@@ -40,7 +47,7 @@ node index.js
 - [x] 上传图片 -- 未完成
 - [x] 摄影 -- 未完成
 - [x] 旅游 -- 未完成
-```
+
 
 
 ```
