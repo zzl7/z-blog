@@ -27,7 +27,6 @@ npm start
 
 ```
 cd z-blog/backend
-cd z-blog/front
 
 npm i
 
