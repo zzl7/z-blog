@@ -141,6 +141,25 @@ paths:
           description: ''
         '400':
           description: no enough input
+  /v1/blog/{id}/favs:
+    put:
+      tags:
+        - blog
+      parameters:
+        - in: path
+          name: id
+          description: 博客ID
+        - in: body
+          name: body
+          description: 点赞
+          schema:
+            $ref: '#/definitions/favs'
+      description: 评论博客
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: no enough input
   /v1/blogs:
     get:
       tags:
@@ -201,6 +220,11 @@ definitions:
         type: string
       commentator: 
         type: string
+  favs:
+    type: object
+    properties:
+      favs:
+        type: number  
 tags:
   - name: user
     description: 用户相关API

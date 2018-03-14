@@ -12,7 +12,9 @@ router.post('/v1/user/login', userModel.login);
 router.post('/v1/blog', blogModel.createBlog);
 router.get('/v1/blog/:id', blogModel.getBlog);
 router.get('/v1/blogs/recent', blogModel.getRecentBlog);
+router.get('/v1/blogs/favs', blogModel.getfavs);
 router.put('/v1/blog/:id/comment', blogModel.commentBlog);
+router.put('/v1/blog/:id/favs', blogModel.favs);
 router.delete('/v1/blog/:id', blogModel.deleteBlog);
 router.get('/v1/blogs', blogModel.getBlogs);
 

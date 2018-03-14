@@ -9,10 +9,13 @@ import './index.less';
 class index extends React.Component {
     constructor() {
         super()
-        this.getRecentBlog();
+        
         this.state = {
-            recentBlogs: []
+            recentBlogs: [],
+            favsBlogs: []
         };
+        this.getRecentBlog();
+        this.getFavsBlog();
     }
     
     getRecentBlog() {
@@ -20,6 +23,14 @@ class index extends React.Component {
             console.log(response);
             this.setState({
                 recentBlogs: response.data.data
+            });
+        })
+    }
+    getFavsBlog() {
+        blogModel.getFavs().then((response) => {
+            console.log(response);
+            this.setState({
+                favsBlogs: response.data.data
             });
         })
     }
@@ -54,7 +65,7 @@ class index extends React.Component {
                 <h3>点赞TOP5</h3>
                 <ul>
                     {
-                        this.state.recentBlogs.map((record) => {
+                        this.state.favsBlogs.map((record) => {
                             return (
                                 <li key={record._id}>
                                     <Link to={`/pages/blog/${record._id}`}>

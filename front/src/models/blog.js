@@ -19,6 +19,12 @@ const Index = {
     commentBlog(id, params){
         return axios.put(`/v1/blog/${id}/comment`, params) 
     },
+    favs(id, params){
+        return axios.put(`/v1/blog/${id}/favs`, params) 
+    },
+    getFavs(){
+        return axios.get(`/v1/blogs/favs`) 
+    },
 }
 
 export default Index;

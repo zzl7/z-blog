@@ -29,6 +29,7 @@ class index extends React.Component {
                 <div className="index-page">
                     {
                         this.state.blogsList.map(record => {
+                            let favs = record.meta && record.meta.favs ? record.meta.favs : 0;
                             return (
                                 <Card
                                     hoverable
@@ -46,7 +47,7 @@ class index extends React.Component {
                                         <span>{record.author}</span>
                                         <span className="favorite">
                                             <Icon type="heart" />
-                                            <span>999+</span>
+                                            <span>{favs}</span>
                                         </span>
                                     </div>
                                 </Card>

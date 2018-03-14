@@ -125,7 +125,6 @@ class index extends React.Component {
         });
     }
     onChangeComment(e) {
-
         this.setState({
             body: e.target.value
         });
@@ -144,7 +143,14 @@ class index extends React.Component {
             reactMdeValue: value
         });
     }
+    onFavs(){
+        let id = this.props.match.params.id;
+        blogModel.favs(id, {favs: 1}).then((response) => {
+            this.getBlog();
+        });
+    }
     render() {
+        let favs = this.state.content.meta && this.state.content.meta.favs ? this.state.content.meta.favs : 0;
         let mdText = this.renderMarkdown(this.state.content.body);
         return (
             <div>
@@ -155,9 +161,9 @@ class index extends React.Component {
                             <div className="author">
                                 <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                 <span>{this.state.content.author}</span>
-                                <span className="favorite">
+                                <span className="favorite" onClick={this.onFavs.bind(this)}>
                                     <Icon type="heart" />
-                                    <span>999+</span>
+                                    <span>{favs}</span>
                                 </span>
                             </div>
 
@@ -175,7 +181,7 @@ class index extends React.Component {
                                         <div className="comments" key={record._id}>
                                             <div className="author">
                                                 <div>
-                                                    <img class="author-icon" alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
+                                                    <img className="author-icon" alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
                                                     <span>{index + 1}楼: {record.commentator}</span>
                                                     <span className="date">{moment(record.date).format('YYYY-MM-DD HH:mm')}</span>
                                                 </div>
