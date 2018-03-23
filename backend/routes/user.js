@@ -1,7 +1,21 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser');
-const userModel = require('../controller/user')
-const blogModel = require('../controller/blog')
+const userModel = require('../controller/user');
+const blogModel = require('../controller/blog');
+const photoModel = require('../controller/photo');
+const multer = require('multer');
+
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    let fileFormat = (file.originalname).split(".");
+    cb(null, Date.now() + '.' + fileFormat[fileFormat.length - 1])
+  }
+})
+ 
+let upload = multer({ storage: storage })
 
 router.use(bodyParser.json());
 
@@ -17,6 +31,8 @@ router.put('/v1/blog/:id/comment', blogModel.commentBlog);
 router.put('/v1/blog/:id/favs', blogModel.favs);
 router.delete('/v1/blog/:id', blogModel.deleteBlog);
 router.get('/v1/blogs', blogModel.getBlogs);
+
+router.post('/v1/photo/upload',upload.single('file'), photoModel.uploadImg);
 
 module.exports = {
     router
