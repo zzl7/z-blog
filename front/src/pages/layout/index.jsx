@@ -12,6 +12,7 @@ import About from '../about';
 import Manager from '../manager';
 import Tour from '../tour';
 import AddBlog from '../addBlog';
+import UploadImg from '../uploadImg';
 import Register from '../../components/register';
 import history from 'history/createBrowserHistory';
 import userModel from '$models/user';
@@ -135,6 +136,7 @@ class index extends React.Component {
                         <Route path="/pages/about" component={About} />
                         <Route path="/pages/manager" component={Manager} />
                         <Route path="/pages/addBlog" component={AddBlog} />
+                        <Route path="/pages/upload" component={UploadImg} />
                     </div>
                     {/* <div className="right">right</div> */}
                 </div>

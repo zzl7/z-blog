@@ -66,7 +66,7 @@ class index extends React.Component {
             dataIndex: 'author',
             key: 'author',
             render: (text, row) => {
-                return '999+'
+                return row.meta.favs ? row.meta.favs : 0
             }
         }, {
             title: '创建时间',
@@ -83,6 +83,7 @@ class index extends React.Component {
         return (
             <div className="add-blog">
                 <Button className="add-blog-btn"><Link to="/pages/addBlog">新增文章</Link></Button>
+                <Button className="add-blog-btn"><Link to="/pages/upload">上传照片</Link></Button>
                 {/* <div className="about-page">
                     <div className="blog-content">
                         <div className="full-image"><img alt="example" src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-479801.jpg" /></div>

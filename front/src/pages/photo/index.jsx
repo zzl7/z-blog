@@ -34,7 +34,7 @@ class index extends React.Component {
             this.setState({
                 imageList: response.data.data
             });
-            forceCheck();
+            // forceCheck();
         });
     }
     getUser() {

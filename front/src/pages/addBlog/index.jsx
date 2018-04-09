@@ -97,6 +97,7 @@ class ModalForm extends React.Component {
                             <ReactMde
                                 commands={ReactMdeCommands.getDefaultCommands()}
                                 showdownOptions={{ tables: false, simplifiedAutoLink: false }}
+                                visibility={{previewHelp: false}}
                             />
                             )}
                         <div className="btn-content"><Button className="btn" onClick={this.addBlog.bind(this)}>发表</Button></div>
