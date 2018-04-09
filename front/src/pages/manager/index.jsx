@@ -66,7 +66,7 @@ class index extends React.Component {
             dataIndex: 'author',
             key: 'author',
             render: (text, row) => {
-                return row.meta.favs ? row.meta.favs : 0
+                return row.meta && row.meta.favs ? row.meta.favs : 0
             }
         }, {
             title: '创建时间',
