@@ -7,7 +7,7 @@ const multer = require('multer');
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/')
+    cb(null, 'public/uploads/')
   },
   filename: function (req, file, cb) {
     let fileFormat = (file.originalname).split(".");
@@ -33,6 +33,8 @@ router.delete('/v1/blog/:id', blogModel.deleteBlog);
 router.get('/v1/blogs', blogModel.getBlogs);
 
 router.post('/v1/photo/upload',upload.single('file'), photoModel.uploadImg);
+router.post('/v1/photo', photoModel.photo);
+router.get('/v1/photo', photoModel.getPhoto);
 
 module.exports = {
     router

@@ -22,15 +22,15 @@ class index extends React.Component {
         this.props.history.push('/pages/detail');
     }
     getPhoto() {
-        const params = {
-            rn: 15,
-            tag1: '动漫',
-            tag2: '全部',
-            ftags: '可爱'
-        };
+        // const params = {
+        //     rn: 15,
+        //     tag1: '动漫',
+        //     tag2: '全部',
+        //     ftags: '可爱'
+        // };
         console.log('0000');
-        photoModel.getPhoto(params).then((response) => {
-            delete response.data.data[response.data.data.length -1]
+        photoModel.getPhoto().then((response) => {
+            // delete response.data.data[response.data.data.length -1]
             this.setState({
                 imageList: response.data.data
             });
@@ -66,15 +66,15 @@ class index extends React.Component {
                                     key={key}
                                     onClick={this.blogDetail.bind(this)}
                                     className="mycard"
-                                    cover={<img alt="example" src={record.image_url} />}
+                                    cover={<img alt="example" src={record.url ?  record.url[0] : ''} />}
                                 >
                                     <Meta
-                                        title="网页设计趋势"
-                                        description="网页设计师不要错过！2015年度最值得关注的21个网页设计趋势..."
+                                        title={record.title}
+                                        description={record.body}
                                     />
                                     <div className="author">
                                         <img alt="example" src="https://alpha.wallhaven.cc/wallpapers/thumb/small/th-479801.jpg" />
-                                        <span>秦时明月</span>
+                                        <span>{record.author}</span>
                                         <span className="favorite">
                                             <Icon type="heart" />
                                             <span>999+</span>

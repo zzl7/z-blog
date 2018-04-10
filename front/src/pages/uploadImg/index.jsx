@@ -18,11 +18,13 @@ class ModalForm extends React.Component {
         super(props)
         this.state = {
             content: '',
-            blogsList: []
+            blogsList: [],
+
         }
         // this.getBlogs();
         this.userInfo = sessionStorage.getItem("userInfo") ?
             JSON.parse(sessionStorage.getItem("userInfo")) : []
+        this.pathList = [];
     }
     componentDidMount() {
         // this.setState({
@@ -36,7 +38,7 @@ class ModalForm extends React.Component {
     //         });
     //     })
     // }
-    uploadImg() {
+    photo() {
         this.props.form.validateFields((err, values) => {
             console.log('values', values)
             if (err) {
@@ -44,12 +46,12 @@ class ModalForm extends React.Component {
             }
             console.log(values, 'values');
             let params = {
-                body: '测试',
+                body: values.body,
                 author: this.userInfo[0].userName,
                 title: values.title,
-                fileList: values.fileList.fileList                
+                url: this.pathList
             };
-            photoModel.uploadImg(params).then((response) => {
+            photoModel.photo(params).then((response) => {
                 if (response.data.data.status === 'success') {
                     message.success('发表成功');
                     // this.props.history.push('/pages/manager');
@@ -68,6 +70,11 @@ class ModalForm extends React.Component {
         }
         return this.md.render(source);
     }
+    fileChange(res) {
+        this.pathList = res.fileList.map(record => {
+            return record.response ? record.response.data.path : '';            
+        })
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -81,12 +88,23 @@ class ModalForm extends React.Component {
             defaultFileList: [...fileList],
             multiple: true,
             className: 'upload-list-inline',
-          };
+            onChange: this.fileChange.bind(this)
+        };
         return (
             <div className="upload-img">
                 <Form layout="horizontal">
                     <FormItem label="标题" {...formItemLayout}>
                         {getFieldDecorator('title', {
+                            initialValue: '',
+                            rules: [{
+                                required: true
+                            }]
+                        })(
+                            <Input size="large" />
+                            )}
+                    </FormItem>
+                    <FormItem label="描述" {...formItemLayout}>
+                        {getFieldDecorator('body', {
                             initialValue: '',
                             rules: [{
                                 required: true
@@ -109,11 +127,11 @@ class ModalForm extends React.Component {
                                 <p className="ant-upload-text">点击或者拖拽到这里上传</p>
                             </Dragger>
                             )}
-                        <div className="btn-content"><Button className="btn" onClick={this.uploadImg.bind(this)}>发表</Button></div>
+                        <div className="btn-content"><Button className="btn" onClick={this.photo.bind(this)}>发表</Button></div>
                     </FormItem>
 
                 </Form>
-                
+
             </div>
 
         )

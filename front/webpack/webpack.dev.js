@@ -31,7 +31,7 @@ module.exports = webpackMerge(commonConfig, {
         // contentBase: "./dist",//本地服务器所加载的页面所在的目录
         proxy: [
             {
-                context: ['/v1/**'],
+                context: ['/v1/**', '/uploads/**'],
                 target: 'http://127.0.0.1:3000',
                 secure: false
             },

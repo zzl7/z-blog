@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 const PhotoSchema = new Schema({
     title: String,
-    minUrl: String,
-    url: String,
+    minUrl: Array,
+    url: Array,
     body: String,
     author: String,
     date: Date,
