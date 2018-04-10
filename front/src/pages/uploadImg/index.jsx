@@ -72,7 +72,7 @@ class ModalForm extends React.Component {
     }
     fileChange(res) {
         this.pathList = res.fileList.map(record => {
-            return record.response ? record.response.data.path : '';            
+            return record.response && record.response.data ? record.response.data.path : '';            
         })
     }
     render() {
