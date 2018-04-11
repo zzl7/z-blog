@@ -96,8 +96,8 @@ class index extends React.Component {
         console.log(this.state.content)
         return (
             <div>
-                <div className="blog-detail">
-                    <div className="blog-content">
+                <div className="photo-detail">
+                    <div className="photo-detail-content">
                         <div className="full-image">
                             {this.state.content && this.state.content.url ? this.state.content.url.map(record => {
                                 return (
