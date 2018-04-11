@@ -35,6 +35,7 @@ router.get('/v1/blogs', blogModel.getBlogs);
 router.post('/v1/photo/upload',upload.single('file'), photoModel.uploadImg);
 router.post('/v1/photo', photoModel.photo);
 router.get('/v1/photo', photoModel.getPhoto);
+router.get('/v1/photo/:id', photoModel.getPhotoDetail);
 
 module.exports = {
     router

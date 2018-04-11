@@ -52,7 +52,8 @@ class ModalForm extends React.Component {
                 url: this.pathList
             };
             photoModel.photo(params).then((response) => {
-                if (response.data.data.status === 'success') {
+                if (response.data.data === 'success') {
+                    this.props.history.push('/pages/photo');
                     message.success('发表成功');
                     // this.props.history.push('/pages/manager');
                     // this.props.form.resetFields();

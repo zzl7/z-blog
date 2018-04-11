@@ -18,8 +18,8 @@ class index extends React.Component {
         this.getPhoto();
         this.getUser();
     }
-    blogDetail() {
-        this.props.history.push('/pages/detail');
+    blogDetail(id) {
+        this.props.history.push(`/pages/photoDetail/${id}`);
     }
     getPhoto() {
         // const params = {
@@ -64,7 +64,7 @@ class index extends React.Component {
                                 <Card
                                     hoverable
                                     key={key}
-                                    onClick={this.blogDetail.bind(this)}
+                                    onClick={()=>{this.blogDetail(record._id)}}
                                     className="mycard"
                                     cover={<img alt="example" src={record.url ?  record.url[0] : ''} />}
                                 >

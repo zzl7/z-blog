@@ -7,6 +7,7 @@ const Search = Input.Search;
 import './index.less';
 import IndexPage from '../index'
 import BlogDetail from '../blogDetail'
+import PhotoDetail from '../photoDetail'
 import Photo from '../photo';
 import About from '../about';
 import Manager from '../manager';
@@ -137,6 +138,7 @@ class index extends React.Component {
                         <Route path="/pages/manager" component={Manager} />
                         <Route path="/pages/addBlog" component={AddBlog} />
                         <Route path="/pages/upload" component={UploadImg} />
+                        <Route path="/pages/photoDetail/:id" component={PhotoDetail} />
                     </div>
                     {/* <div className="right">right</div> */}
                 </div>

@@ -12,6 +12,9 @@ const Index = {
     },
     getPhoto(params){
         return axios.get('/v1/photo');
+    },
+    getPhotoDetail(id){
+        return axios.get(`/v1/photo/${id}`);
     }
 }
 

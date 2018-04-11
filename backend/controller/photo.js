@@ -51,6 +51,16 @@ let photo = {
             res.status(200);
             next();
         })
+    },
+    getPhotoDetail(req, res, next){
+        let params = req.params;
+        model.photo.find({ _id: params.id }, (err, results) => {
+            res.status(200);
+            res.json({
+                data: results
+            });
+            next();
+        })
     }
 }
 
