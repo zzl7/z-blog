@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const userModel = require('../controller/user');
 const blogModel = require('../controller/blog');
 const photoModel = require('../controller/photo');
+const novelModel = require('../controller/novel');
 const multer = require('multer');
 
 let storage = multer.diskStorage({
@@ -36,6 +37,10 @@ router.post('/v1/photo/upload',upload.single('file'), photoModel.uploadImg);
 router.post('/v1/photo', photoModel.photo);
 router.get('/v1/photo', photoModel.getPhoto);
 router.get('/v1/photo/:id', photoModel.getPhotoDetail);
+
+router.get('/v1/novel/:keyword/search', novelModel.searchNovel);
+router.get('/v1/novel/list', novelModel.getList);
+router.get('/v1/novel/chapter', novelModel.getChapter);
 
 module.exports = {
     router

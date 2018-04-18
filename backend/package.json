@@ -31,11 +31,15 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
+    "gbk-string": "^0.1.0",
     "http-proxy-middleware": "^0.17.4",
+    "iconv-lite": "^0.4.21",
     "mongodb": "^3.0.3",
     "mongoose": "^5.0.7",
     "multer": "^1.3.0",
-    "pm2": "^2.10.1"
+    "pm2": "^2.10.1",
+    "request": "^2.85.0"
   }
 }
