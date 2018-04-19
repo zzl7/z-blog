@@ -66,9 +66,9 @@ $(function () {
                 var html = '';
                 for (var i = 0; i < res.bookList.length; i++) {
                     html += '<li data-link="' + res.bookList[i].link + '">';
-                    html += '<div >' + res.bookList[i].name + '</div>';
-                    html += '<div >作者:' + res.bookList[i].author + '</div>';
-                    html += '<div >最新章节:' + res.bookList[i].updateName + '</div>';
+                    html += '<div class="book-name">' + res.bookList[i].name + '</div>';
+                    html += '<div >作者: ' + res.bookList[i].author + '</div>';
+                    html += '<div >最新章节: ' + res.bookList[i].updateName + '</div>';
                     html += '</li>'
                 }
                 

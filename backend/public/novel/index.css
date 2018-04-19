@@ -14,10 +14,20 @@ a{
 .container{
     padding: 10px;
 }
+
 #novel li{
     padding: 10px 5px;
     cursor: pointer;
     font-size: 1.3em;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    color: #666;
+}
+#novel li div{
+    color: #888;
+}
+#novel li div.book-name{
+    color: #666;
 }
 .chapters, .novel{
     width: 100%;
