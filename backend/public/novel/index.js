@@ -54,12 +54,9 @@
 $(function () {
     $("#searchBtn").click(function () {
         var keyword = $("#search").val();
-        $("#novel").show();
-        $("#searchRes").show();
-        $("#chapters").hide();
-        $("#content").hide();
+
         $.ajax({
-            url: '/v1/novel/'+encodeURI(keyword)+'/search',
+            url: '/v1/novel/' + encodeURI(keyword) + '/search',
             type: 'GET',
             success: function (res) {
                 $("#searchRes").html(res.text);
@@ -71,14 +68,15 @@ $(function () {
                     html += '<div >最新章节: ' + res.bookList[i].updateName + '</div>';
                     html += '</li>'
                 }
-                
+                $("#novel").show();
+                $("#searchRes").show();
+                $("#chapters").hide();
+                $("#content").hide();
                 $("#novel").html(html);
 
 
                 $("#novel li").click(function () {
-                    $("#novel").hide();
-                    $("#searchRes").hide();
-                    $("#chapters").show();
+
                     var link = $(this).attr('data-link');
                     $.ajax({
                         url: '/v1/novel/list?link=' + link,
@@ -90,16 +88,19 @@ $(function () {
                             for (var i = 0; i < content.length; i++) {
                                 chaptersHtml += '<li data-link="' + content[i].link + '"><a href="#">' + content[i].text + '</a></li>'
                             }
-                           
+                            $("#novel").hide();
+                            $("#searchRes").hide();
+                            $("#chapters").show();
                             $("#chapters").html(chaptersHtml);
                             $("#chapters li").click(function () {
-                                $("#chapters").hide();
-                                $("#content").show();
+
                                 var link = $(this).attr('data-link');
                                 $.ajax({
                                     url: '/v1/novel/chapter?link=' + link,
                                     type: 'GET',
                                     success: function (chapterRes) {
+                                        $("#chapters").hide();
+                                        $("#content").show();
                                         $("#chapterTitle").html(chapterRes.title);
                                         $("#content").html(chapterRes.content);
                                     }
