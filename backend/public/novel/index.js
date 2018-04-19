@@ -102,7 +102,7 @@ $(function () {
                                         $("#chapters").hide();
                                         $("#content").show();
                                         $("#chapterTitle").html(chapterRes.title);
-                                        $("#content").html(chapterRes.content.replace(/\n\n/g,"<br>").replace(/[1t]/g, 'lt'));
+                                        $("#content").html(chapterRes.content.replace(/\n\n/g,"<br>").replace(/1t/g, 'lt'));
                                     }
                                 })
                             })
