@@ -13,7 +13,7 @@ let novel = {
         request({url:'http://www.biquge.lu/s.php?ie=gbk&q='+params, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
-            let html = iconv.decode(htmlData.body, 'gb2312')
+            let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
             let $ = cheerio.load(html, {decodeEntities: false});
             let text = $('.so_list h2').text();
             let searchList = $('.so_list .type_show').children();
@@ -38,7 +38,7 @@ let novel = {
         request({url:'http://www.biquge.lu'+link, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
-            let html = iconv.decode(htmlData.body, 'gb2312')
+            let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
             let $ = cheerio.load(html, {decodeEntities: false});
             let booklistNode = $(".listmain").find('a');
             var bookList = [];
@@ -57,7 +57,7 @@ let novel = {
         request({url:'http://www.biquge.lu' + link, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
-            let html = iconv.decode(htmlData.body, 'gb2312')
+            let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
             let $ = cheerio.load(html, {decodeEntities: false});
             let title = $(".content h1").text();
             let content = $(".content #content").text().replace('请记住本书首发域名：www.biquge.lu', '').replace('笔趣阁手机版阅读网址：m.biquge.lu', '');
