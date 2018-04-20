@@ -125,8 +125,8 @@ function showContent(link) {
             html += '<a href="#" data-link="' + chapterRes.list + '" class="list">列表</li>';
             html += '<a href="#" data-link="' + chapterRes.nextChapter + '" class="nextChapter">下一章</li>';
             $("#chapterTitle").html(html);
-            $("#content").html(chapterRes.content.replace(/\n\n/g, "<br>").replace(/1t/g, 'lt'));
-
+            $("#content").html(chapterRes.content.replace(/\n\n/g, "<br>").replace(/1t/g, 'lt').replace('http://www.biquge.lu/book', ''))
+            $("#content").append('<div class="bottom">' + html + '</div>');
             $(".preChapter").click(function(){
                 var preLink = $(this).attr('data-link');
                 showContent(preLink);
@@ -139,7 +139,7 @@ function showContent(link) {
                     console.log(nextLink, 'nextLink');
                     showList(nextLink);
                 }else{
-                    showContent(listLink);
+                    showContent(nextLink);
                 }
             })
             $(".list").click(function(){

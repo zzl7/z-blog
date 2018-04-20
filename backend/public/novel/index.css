@@ -52,10 +52,22 @@ a{
     color: #666;
     border: 1px solid #ccc;
 }
+#chapterTitle{
+    text-align: center;
+}
 #chapterTitle a{
     margin-left: 10px;
 }
 #chapterTitle span{
+    margin-right: 20px;
+}
+.bottom{
+    text-align: center;
+}
+.bottom a{
+    margin-left: 10px;
+}
+.bottom span{
     margin-right: 20px;
 }
 #searchBtn{
