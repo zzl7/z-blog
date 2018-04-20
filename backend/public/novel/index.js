@@ -134,10 +134,12 @@ function showContent(link) {
 
             $(".nextChapter").click(function(){
                 var nextLink = $(this).attr('data-link');
-                if(!nextLink.macth('html')){
-                    showContent(nextLink);
+                console.log(nextLink, 'nextLink');
+                if(!nextLink.match('html')){
+                    console.log(nextLink, 'nextLink');
+                    showList(nextLink);
                 }else{
-                    showList(listLink);
+                    showContent(listLink);
                 }
             })
             $(".list").click(function(){
