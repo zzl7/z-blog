@@ -52,6 +52,12 @@ a{
     color: #666;
     border: 1px solid #ccc;
 }
+#chapterTitle a{
+    margin-left: 10px;
+}
+#chapterTitle span{
+    margin-right: 20px;
+}
 #searchBtn{
     cursor: pointer;
     background: #838383;

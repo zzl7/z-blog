@@ -10,15 +10,15 @@ let novel = {
         console.log(req.params.keyword, 'ssss')
         // http://www.biquge.lu/s.php?ie=utf-8&q=%B7%B2%C8%CB%D0%DE%CF%C9%B4%AB
         let params = encodeGBK(req.params.keyword);
-        request({url:'http://www.biquge.lu/s.php?ie=gbk&q='+params, encoding: null }, function (req1, htmlData) {
+        request({ url: 'http://www.biquge.lu/s.php?ie=gbk&q=' + params, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
             let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
-            let $ = cheerio.load(html, {decodeEntities: false});
+            let $ = cheerio.load(html, { decodeEntities: false });
             let text = $('.so_list h2').text();
             let searchList = $('.so_list .type_show').children();
             let bookList = [];
-            for(var i=0; i<searchList.length; i++){
+            for (var i = 0; i < searchList.length; i++) {
                 let bookInfo = {};
                 let bookHtml = $(searchList[i]).children('.p10').children('.bookinfo')
                 bookInfo.link = bookHtml.find('a').attr('href');
@@ -29,20 +29,20 @@ let novel = {
                 bookInfo.updateLink = bookHtml.children('.update').find('a').attr('href');
                 bookList.push(bookInfo);
             }
-            res.send({text: text, bookList: bookList});
+            res.send({ text: text, bookList: bookList });
         });
     },
-    getList(req, res, next){
-        let link =  req.query.link;
+    getList(req, res, next) {
+        let link = req.query.link;
         console.log(link, 'link');
-        request({url:'http://www.biquge.lu'+link, encoding: null }, function (req1, htmlData) {
+        request({ url: 'http://www.biquge.lu' + link, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
             let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
-            let $ = cheerio.load(html, {decodeEntities: false});
+            let $ = cheerio.load(html, { decodeEntities: false });
             let booklistNode = $(".listmain").find('a');
             var bookList = [];
-            for(var i=0; i<booklistNode.length; i++){
+            for (var i = 0; i < booklistNode.length; i++) {
                 let chapter = {};
                 chapter.link = $(booklistNode[i]).attr('href');
                 chapter.text = $(booklistNode[i]).text();
@@ -51,16 +51,20 @@ let novel = {
             res.send(bookList);
         });
     },
-    getChapter(req, res, next){
-        let link =  req.query.link;
+    getChapter(req, res, next) {
+        let link = req.query.link;
         console.log(link, 'link');
-        request({url:'http://www.biquge.lu' + link, encoding: null }, function (req1, htmlData) {
+        request({ url: 'http://www.biquge.lu' + link, encoding: null }, function (req1, htmlData) {
             // res.send('user ' + req.params.id);
             // console.log(html.body);
             let html = iconv.decode(htmlData ? htmlData.body : '', 'gb2312')
-            let $ = cheerio.load(html, {decodeEntities: false});
+            let $ = cheerio.load(html, { decodeEntities: false });
             let title = $(".content h1").text();
             let content = $(".content #content").text().replace('请记住本书首发域名：www.biquge.lu', '').replace('笔趣阁手机版阅读网址：m.biquge.lu', '');
+            let nextChapter = $($(".page_chapter").find('a')[2]).attr('href');
+            let list = $($(".page_chapter").find('a')[1]).attr('href');
+            let preChapter = $($(".page_chapter").find('a')[0]).attr('href');
+            console.log(list, 'list');
             // let booklistNode = $(".listmain").find('a');
             // var bookList = [];
             // for(var i=0; i<booklistNode.length; i++){
@@ -69,7 +73,14 @@ let novel = {
             //     chapter.text = $(booklistNode[i]).text();
             //     bookList.push(chapter);
             // }
-            res.send({title: title, content: content});
+            res.send({
+                title: title, 
+                content: content, 
+                nextChapter: nextChapter, 
+                preChapter: preChapter, 
+                list: list
+            });
+            // res.send(html);
         });
     }
 }
