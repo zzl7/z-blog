@@ -37,7 +37,7 @@
     "http-proxy-middleware": "^0.17.4",
     "iconv-lite": "^0.4.21",
     "mongodb": "^3.0.3",
-    "mongoose": "^5.0.7",
+    "mongoose": "^5.7.5",
     "multer": "^1.3.0",
     "pm2": "^2.10.1",
     "request": "^2.85.0"
